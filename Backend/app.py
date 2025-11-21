@@ -123,7 +123,7 @@ def send_email(to_address, subject, body, attachment_path=None):
         print("Brevo email response:", resp.status_code, resp.text)
     except Exception as e:
         print(f"Error sending email via Brevo to {to_address}:", e)
-init_db()
+
 # -----------------------------
 # Routes
 # -----------------------------
@@ -349,5 +349,5 @@ def api_careers():
     return jsonify({"status": "ok"})
 
 if __name__ == "__main__":
-    
+    init_db()
     app.run(debug=True)
