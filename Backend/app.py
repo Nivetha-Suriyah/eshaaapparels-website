@@ -141,15 +141,15 @@ def api_contact():
     message = (request.form.get("message") or "").strip()
     created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    #    ---------- CAPTCHA VERIFICATION ----------
-    captcha_response = request.form.get("g-recaptcha-response")
-    captcha_secret = os.getenv("RECAPTCHA_SECRET_KEY")
+    # #    ---------- CAPTCHA VERIFICATION ----------
+    # captcha_response = request.form.get("g-recaptcha-response")
+    # captcha_secret = os.getenv("RECAPTCHA_SECRET_KEY")
 
-    verify_url = "https://www.google.com/recaptcha/api/siteverify"
-    payload = {"secret": captcha_secret, "response": captcha_response}
+    # verify_url = "https://www.google.com/recaptcha/api/siteverify"
+    # payload = {"secret": captcha_secret, "response": captcha_response}
 
-    captcha_verify = requests.post(verify_url, data=payload).json()
-    print("Captcha verify result:", captcha_verify)  # <-- add this for debugging
+    # captcha_verify = requests.post(verify_url, data=payload).json()
+    # print("Captcha verify result:", captcha_verify)  # <-- add this for debugging
 
     if not captcha_verify.get("success"):
         return jsonify({
@@ -228,15 +228,15 @@ def api_careers():
     phone = (request.form.get("phone") or "").strip()
     created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    #    ---------- CAPTCHA VERIFICATION ----------
-    captcha_response = request.form.get("g-recaptcha-response")
-    captcha_secret = os.getenv("RECAPTCHA_SECRET_KEY")
+    # #    ---------- CAPTCHA VERIFICATION ----------
+    # captcha_response = request.form.get("g-recaptcha-response")
+    # captcha_secret = os.getenv("RECAPTCHA_SECRET_KEY")
 
-    verify_url = "https://www.google.com/recaptcha/api/siteverify"
-    payload = {"secret": captcha_secret, "response": captcha_response}
+    # verify_url = "https://www.google.com/recaptcha/api/siteverify"
+    # payload = {"secret": captcha_secret, "response": captcha_response}
 
-    captcha_verify = requests.post(verify_url, data=payload).json()
-    print("Captcha verify result:", captcha_verify)  # <-- add this for debugging
+    # captcha_verify = requests.post(verify_url, data=payload).json()
+    # print("Captcha verify result:", captcha_verify)  # <-- add this for debugging
 
     if not captcha_verify.get("success"):
         return jsonify({
