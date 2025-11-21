@@ -9,6 +9,7 @@ from email import encoders
 from flask import Flask, jsonify, render_template, request
 import os
 import requests
+import base64
 from dotenv import load_dotenv
 load_dotenv()   # <-- ADD THIS LINE
 # app = Flask(__name__)
@@ -40,8 +41,8 @@ SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
 ADMIN_EMAIL = os.getenv("ADMIN_EMAIL")
 FROM_EMAIL = os.getenv("FROM_EMAIL")
                   # sender address
-print("SMTP_USER =", SMTP_USER)
-print("SMTP_PASSWORD =", SMTP_PASSWORD)
+BREVO_API_KEY = os.getenv("BREVO_API_KEY")
+
 
 
 # -----------------------------
@@ -86,49 +87,38 @@ def init_db():
 # -----------------------------
 # Email helper
 # -----------------------------
-def send_email(to_address: str, subject: str, body: str, attachment_path: str | None = None):
-    """Send a plain text email, optionally with a file attachment."""
+def send_email(to_address, subject, body, attachment_path=None):
+    url = "https://api.brevo.com/v3/smtp/email"
+
+    data = {
+        "sender": {"email": FROM_EMAIL, "name": "Eshaa Apparels"},
+        "to": [{"email": to_address}],
+        "subject": subject,
+        "textContent": body
+    }
+
+    # Attach file if needed (career form)
+    if attachment_path:
+        with open(attachment_path, "rb") as f:
+            file_data = f.read()
+        file_b64 = base64.b64encode(file_data).decode()
+
+        data["attachment"] = [{
+            "content": file_b64,
+            "name": os.path.basename(attachment_path)
+        }]
+
+    headers = {
+        "accept": "application/json",
+        "api-key": BREVO_API_KEY,
+        "content-type": "application/json"
+    }
+
     try:
-        if attachment_path:
-            # Email with attachment
-            msg = MIMEMultipart()
-            msg["Subject"] = subject
-            msg["From"] = FROM_EMAIL
-            msg["To"] = to_address
-
-            # Email body
-            msg.attach(MIMEText(body, _charset="utf-8"))
-
-            # Attach file
-            try:
-                with open(attachment_path, "rb") as f:
-                    part = MIMEBase("application", "octet-stream")
-                    part.set_payload(f.read())
-                encoders.encode_base64(part)
-                filename = os.path.basename(attachment_path)
-                part.add_header("Content-Disposition", f'attachment; filename="{filename}"')
-                msg.attach(part)
-            except Exception as e:
-                print("Error attaching file:", e)
-        else:
-            # Simple email without attachment
-            msg = MIMEText(body, _charset="utf-8")
-            msg["Subject"] = subject
-            msg["From"] = FROM_EMAIL
-            msg["To"] = to_address
-
-        # IMPORTANT: timeout + error handling
-        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT, timeout=10) as server:
-            server.ehlo()
-            server.starttls()
-            server.ehlo()
-            server.login(SMTP_USER, SMTP_PASSWORD)
-            server.send_message(msg)
-
+        response = requests.post(url, json=data, headers=headers)
+        print("Brevo Response:", response.status_code, response.text)
     except Exception as e:
-        # Don't let email failures kill the request
-        print(f"Error sending email to {to_address}: {e}")
-
+        print("Error sending email:", e)
 # -----------------------------
 # Routes
 # -----------------------------
