@@ -87,39 +87,47 @@ def init_db():
 # -----------------------------
 def send_email(to_address: str, subject: str, body: str, attachment_path: str | None = None):
     """Send a plain text email, optionally with a file attachment."""
-    if attachment_path:
-        # Email with attachment
-        msg = MIMEMultipart()
-        msg["Subject"] = subject
-        msg["From"] = FROM_EMAIL
-        msg["To"] = to_address
+    try:
+        if attachment_path:
+            # Email with attachment
+            msg = MIMEMultipart()
+            msg["Subject"] = subject
+            msg["From"] = FROM_EMAIL
+            msg["To"] = to_address
 
-        # Email body
-        msg.attach(MIMEText(body, _charset="utf-8"))
+            # Email body
+            msg.attach(MIMEText(body, _charset="utf-8"))
 
-        # Attach file
-        try:
-            with open(attachment_path, "rb") as f:
-                part = MIMEBase("application", "octet-stream")
-                part.set_payload(f.read())
-            encoders.encode_base64(part)
-            filename = os.path.basename(attachment_path)
-            part.add_header("Content-Disposition", f'attachment; filename="{filename}"')
-            msg.attach(part)
-        except Exception as e:
-            print("Error attaching file:", e)
+            # Attach file
+            try:
+                with open(attachment_path, "rb") as f:
+                    part = MIMEBase("application", "octet-stream")
+                    part.set_payload(f.read())
+                encoders.encode_base64(part)
+                filename = os.path.basename(attachment_path)
+                part.add_header("Content-Disposition", f'attachment; filename="{filename}"')
+                msg.attach(part)
+            except Exception as e:
+                print("Error attaching file:", e)
+        else:
+            # Simple email without attachment
+            msg = MIMEText(body, _charset="utf-8")
+            msg["Subject"] = subject
+            msg["From"] = FROM_EMAIL
+            msg["To"] = to_address
 
-    else:
-        # Simple email without attachment
-        msg = MIMEText(body, _charset="utf-8")
-        msg["Subject"] = subject
-        msg["From"] = FROM_EMAIL
-        msg["To"] = to_address
+        # IMPORTANT: timeout + error handling
+        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT, timeout=10) as server:
+            server.ehlo()
+            server.starttls()
+            server.ehlo()
+            server.login(SMTP_USER, SMTP_PASSWORD)
+            server.send_message(msg)
 
-    with smtplib.SMTP(SMTP_SERVER, SMTP_PORT) as server:
-        server.starttls()
-        server.login(SMTP_USER, SMTP_PASSWORD)
-        server.send_message(msg)
+    except Exception as e:
+        # Don't let email failures kill the request
+        print(f"Error sending email to {to_address}: {e}")
+
 # -----------------------------
 # Routes
 # -----------------------------
@@ -197,7 +205,7 @@ def api_contact():
 
 
 # ---- Career form: /api/careers ----
-@app.route("/api/careers", methods=["POST"])
+# @app.route("/api/careers", methods=["POST"])
 @app.route("/api/careers", methods=["POST"])
 def api_careers():
     name = (request.form.get("name") or "").strip()
