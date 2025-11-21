@@ -90,35 +90,40 @@ def init_db():
 def send_email(to_address, subject, body, attachment_path=None):
     url = "https://api.brevo.com/v3/smtp/email"
 
+    if not BREVO_API_KEY:
+        print("BREVO_API_KEY not set, cannot send email.")
+        return
+
     data = {
         "sender": {"email": FROM_EMAIL, "name": "Eshaa Apparels"},
         "to": [{"email": to_address}],
         "subject": subject,
-        "textContent": body
+        "textContent": body,
     }
 
-    # Attach file if needed (career form)
-    if attachment_path:
-        with open(attachment_path, "rb") as f:
-            file_data = f.read()
-        file_b64 = base64.b64encode(file_data).decode()
-
-        data["attachment"] = [{
-            "content": file_b64,
-            "name": os.path.basename(attachment_path)
-        }]
+    if attachment_path and os.path.isfile(attachment_path):
+        try:
+            with open(attachment_path, "rb") as f:
+                encoded = base64.b64encode(f.read()).decode("utf-8")
+            data["attachment"] = [{
+                "content": encoded,
+                "name": os.path.basename(attachment_path),
+            }]
+        except Exception as e:
+            print("Error attaching file:", e)
 
     headers = {
         "accept": "application/json",
         "api-key": BREVO_API_KEY,
-        "content-type": "application/json"
+        "content-type": "application/json",
     }
 
     try:
-        response = requests.post(url, json=data, headers=headers)
-        print("Brevo Response:", response.status_code, response.text)
+        resp = requests.post(url, json=data, headers=headers, timeout=10)
+        print("Brevo email response:", resp.status_code, resp.text)
     except Exception as e:
-        print("Error sending email:", e)
+        print(f"Error sending email via Brevo to {to_address}:", e)
+init_db()
 # -----------------------------
 # Routes
 # -----------------------------
@@ -248,8 +253,12 @@ def api_careers():
     if not phone:
         missing.append("phone")
 
-    if missing:
-        return f"Missing fields: {', '.join(missing)}", 400
+    # if missing:
+        if missing:
+            return jsonify({
+                "status": "error",
+                "message": f"Missing required fields: {', '.join(missing)}"
+            }), 400
 
     # -----------------------------------------
     # Handle resume upload
@@ -342,5 +351,5 @@ def api_careers():
     return jsonify({"status": "ok"})
 
 if __name__ == "__main__":
-    init_db()
+    
     app.run(debug=True)
