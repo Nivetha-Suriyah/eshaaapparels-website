@@ -175,7 +175,10 @@ def api_contact():
     print("CONTACT FORM DATA:", request.form.to_dict())  # debug
 
     if missing:
-        return f"Missing required fields: {', '.join(missing)}", 400
+       return jsonify({
+            "status": "error",
+            "message": f"Missing required fields: {', '.join(missing)}"
+        }), 400
 
     # Save to DB
     conn = sqlite3.connect(DB_PATH)
