@@ -616,16 +616,17 @@ document.addEventListener("DOMContentLoaded", function () {
         popup.style.display = "flex";
         setTimeout(() => {
             popup.style.display = "none";
-        }, 4000); // hide after 4 seconds
+        }, 4000); // 4 seconds
     }
 
-    // If any form (contact or career) set the flag before redirecting here:
+    // After redirect from a successful form submission:
     if (sessionStorage.getItem("formSubmitted") === "yes") {
         showSuccessPopup();
         sessionStorage.removeItem("formSubmitted");
     }
 });
 </script>
+
 
 </body>
 </html>

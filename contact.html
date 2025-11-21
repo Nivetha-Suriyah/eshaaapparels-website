@@ -428,30 +428,40 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 
 <!-- Popup js script -->
- <script>
+<script>
 document.addEventListener("DOMContentLoaded", function () {
-    const popup = document.getElementById("success-popup");
-
-    function showSuccessPopup() {
-        if (!popup) return;
-        popup.style.display = "flex";
-        setTimeout(() => {
-            popup.style.display = "none";
-        }, 4000); // 4 seconds
-    }
-
-    // Before submit: mark that a popup should be shown
+    // Attach AJAX submit to ALL forms with class "popup-form"
     document.querySelectorAll("form.popup-form").forEach(form => {
-        form.addEventListener("submit", function () {
-            sessionStorage.setItem("formSubmitted", "yes");
+        form.addEventListener("submit", async function (event) {
+            event.preventDefault(); // stop normal form navigation
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    alert("There was an error. Please try again.");
+                    return;
+                }
+
+                const data = await response.json();
+                if (data.status === "ok") {
+                    // mark that we should show popup on home page
+                    sessionStorage.setItem("formSubmitted", "yes");
+                    // go to home page
+                    window.location.href = "/";
+                }
+
+            } catch (error) {
+                console.error("Form error:", error);
+                alert("Network error. Please try again.");
+            }
         });
     });
-
-    // After reload/redirect: if flag is set, show popup once
-    if (sessionStorage.getItem("formSubmitted") === "yes") {
-        showSuccessPopup();
-        sessionStorage.removeItem("formSubmitted");
-    }
 });
 </script>
 

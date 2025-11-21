@@ -6,7 +6,7 @@ from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
-from flask import Flask, render_template, request
+from flask import Flask, jsonify, render_template, request
 import os
 from dotenv import load_dotenv
 load_dotenv()   # <-- ADD THIS LINE
@@ -201,8 +201,8 @@ def api_contact():
         print("Error sending auto-reply (contact):", e)
 
     # Simple response (you can change to redirect later)
-    return "Thank you for your message. We will contact you soon."
-
+    # return "Thank you for your message. We will contact you soon."
+    return jsonify({"status": "ok"})
 
 # ---- Career form: /api/careers ----
 # @app.route("/api/careers", methods=["POST"])
@@ -311,8 +311,8 @@ def api_careers():
     except Exception as e:
         print("Error sending auto-reply (career):", e)
 
-    return "Thank you for your application! Our team will contact you soon."
-
+    # return "Thank you for your application! Our team will contact you soon."
+    return jsonify({"status": "ok"})
 
 if __name__ == "__main__":
     init_db()
