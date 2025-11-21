@@ -75,10 +75,25 @@
   </div>
 </section>
 <!-- ===== Floating WhatsApp (left) ===== -->
-
-  <a class="float-whatsapp" href="https://wa.me/910000000000" target="_blank" aria-label="WhatsApp">
+<a class="float-whatsapp"
+   href="https://wa.me/918526644464?text=I%20would%20like%20to%20know%20more%20about%20your%20products%20at%20Eshaa%20Apparels."
+   target="_blank"
+   aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
-  </a>
+</a>
+
+<a id="whatsapp-link" class="float-whatsapp" target="_blank" aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+  const phone = "918526644464"; // replace with your real number
+  const message = "I am interested in learning more about the product range offered by Eshaa Apparels. Kindly share further details";
+  
+  document.getElementById("whatsapp-link").href =
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+</script>
+
 
 <!-- <section class="section container">
   <h1>Products</h1>
@@ -102,14 +117,9 @@
           <span class="cat-arrow">&#9660;</span>
         </div>
         <ul class="product-sublist">
-          <li class="product-subitem active" data-sub="polo">Polo Tshirt</li>
+          <!-- <li class="product-subitem active" data-sub="polo">Polo Tshirt</li> -->
           <li class="product-subitem" data-sub="Formal">Formal Shirts</li>
           <li class="product-subitem" data-sub="Casual">Casual Shirts</li>
-          <!-- <li class="product-subitem" data-sub="uniform">Uniform Tshirt</li>
-          <li class="product-subitem" data-sub="oversized">Over Sized Tshirts</li>
-          <li class="product-subitem" data-sub="hoodie">Hoodie</li>
-          <li class="product-subitem" data-sub="track-pants">Track Pants</li>
-          <li class="product-subitem" data-sub="bottom-wear">Bottom Wear</li> -->
         </ul>
       </div>
 
@@ -120,7 +130,6 @@
           <span class="cat-arrow">&#9660;</span>
         </div>
         <ul class="product-sublist">
-          <li class="product-subitem" data-sub="Crop Top">Crop Top</li>
           <li class="product-subitem" data-sub="Kurtis">Kurtis</li>
           <li class="product-subitem" data-sub="bottom-wear">Bottom Wear</li>
         </ul>
@@ -214,9 +223,9 @@
       <ul class="f-links">
         <li><a href="products.html#mens">Mens Wear</a></li>
         <li><a href="products.html#womens">Womens Wear</a></li>
-        <li><a href="products.html#girls">Girls Wear</a></li>
-        <li><a href="products.html#boys">Boys Wear</a></li>
-        <li><a href="products.html#uniforms">Uniform Shirts</a></li>
+        <li><a href="products.html#girls"> </a></li>
+        <li><a href="products.html#boys"> </a></li>
+        <li><a href="products.html#uniforms"> </a></li>
       </ul>
     </div>
 
@@ -270,17 +279,17 @@
   </a>
 
   <!-- Email -->
-  <a href="mailto:eshaapparelssales@gmail.com" class="side-box">
-    <span class="side-icon">
-      <i class="fa-regular fa-envelope"></i>
-    </span>
-    <span class="side-text">
-      <!-- <span class="side-label">E-mail</span> -->
-      <span class="side-value">eshaapparelssales@gmail.com</span>
-    </span>
-  </a>
+   <a href="mailto:eshaapparelssales@gmail.com?subject=Product%20Information%20Request%20%E2%80%94%20Eshaa%20Apparels&body=Dear%20Eshaa%20Apparels%20Team%2C%0D%0A%0D%0AI%20am%20reaching%20out%20to%20request%20more%20information%20regarding%20your%20products%20and%20available%20offerings.%20Please%20share%20the%20details%20at%20your%20convenience.%0D%0A%0D%0AThank%20you."
+   target="_blank"
+   class="side-box">
+  <span class="side-icon">
+    <i class="fa-regular fa-envelope"></i>
+  </span>
+  <span class="side-text">
+    <span class="side-value">eshaapparelssales@gmail.com</span>
+  </span>
+</a>
 
-  <!-- Location -->
   <!-- Location -->
 <a href="https://www.google.com/maps/place/Eshaa+Apparels/@11.6423499,78.1431546,17z/"
    target="_blank"
@@ -310,7 +319,7 @@
 <script src="js/main.js"></script>
 <script src="js/nav.js"></script>
 <script src="js/product.js"></script>
-<script src="js/forms.js"></script>
+<!-- <script src="js/forms.js"></script> -->
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {

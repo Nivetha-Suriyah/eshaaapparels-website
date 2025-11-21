@@ -63,7 +63,7 @@
 </header>
 
   <section class="hero-banner"
-         style="background:url('assets/Placeholder/abou-hero.JPG') center/cover no-repeat;">
+         style="background:url('assets/icons/aboutbanner.jpeg') center/cover no-repeat;">
   <div class="hero-overlay">
     <div class="container-bleed">
       <h1>About Us</h1>
@@ -78,16 +78,34 @@
 
   <!-- ===== Floating WhatsApp (left) ===== -->
 
-  <a class="float-whatsapp" href="https://wa.me/910000000000" target="_blank" aria-label="WhatsApp">
+  <a class="float-whatsapp"
+   href="https://wa.me/918526644464?text=I%20would%20like%20to%20know%20more%20about%20your%20products%20at%20Eshaa%20Apparels."
+   target="_blank"
+   aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
-  </a>
+</a>
+
+<a id="whatsapp-link" class="float-whatsapp" target="_blank" aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+  const phone = "918526644464"; // replace with your real number
+  const message = "I am interested in learning more about the product range offered by Eshaa Apparels. Kindly share further details";
+  
+  document.getElementById("whatsapp-link").href =
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+</script>
+
 
   <!-- ===== Intro split: image + content ===== -->
   <section class="section container about-intro">
     <div class="grid-split">
       <figure class="intro-figure">
         <!-- Replace with your image (you said: assets/images/placeholder/buildinglogo.jpg) -->
-        <img src="assets/Placeholder/buildinglogo.jpeg" alt="Eshaa Apparels facility">
+        <img src="assets/icons/buildinglogo1.JPG" alt="Eshaa Apparels facility">
+        &nbsp;
+        <img src="assets/icons/buildinglogo2.JPG" alt="Eshaa Apparels facility">
       </figure>
       <div class="intro-copy">
         <p class="eyebrow">KNOW ABOUT US:</p>
@@ -112,39 +130,36 @@
   </section>
 
   <!-- ===== Product Range (two-column text + image right + bullet list) ===== -->
-  <section class="section container product-range">
-    <h2 class="section-title">Our Product Range:</h2>
+  <section class="product-certificates">
+  <!-- LEFT SIDE -->
+  <div class="product-left">
+    <h2>Our Product Range & Certificates</h2>
 
-    <div class="grid-split">
-      <div>
-        <p>
-          As one of the leading <strong>knitwear manufacturers in Salem</strong>, we specialize in high-quality knitwear
-          for <strong>men, women, kids and infants</strong>. Our wide range includes:
-        </p>
-        <ul class="bullets">
-          <li>Men’s Wear – comfortable and fashionable knitwear.</li>
-          <li>Women’s Wear – sophisticated styles blending fashion with function.</li>
-          <li>Kids/Girls Wear – durable, playful designs and comfy everyday pieces.</li>
-          <li>Sportswear – high-performance knitwear for athletes.</li>
-          <li>Undergarments – breathable, ultra-comfortable essentials.</li>
-          <li>Nightwear – cozy, lightweight sleepwear.</li>
-          <li>Infants (Baby Wear) – gentle knitwear for sensitive skin.</li>
-        </ul>
-      </div>
+    <p>
+      As one of the leading <strong>knitwear manufacturers in Salem</strong>, we specialize in
+      high-quality knitwear for <strong>men, women, kids and infants</strong>.
+      Our wide range includes:
+    </p>
 
-      <figure class="range-image">
-        <img src="assets/Placeholder/Capture.JPG" alt="Sewing line">
-      </figure>
+    <ul>
+      <li><strong>Men’s Wear</strong> – comfortable and fashionable knitwear.</li>
+      <li><strong>Women’s Wear</strong> – sophisticated styles blending fashion with function.</li>
+    </ul>
+  </div>
+
+  <!-- RIGHT SIDE -->
+  <div class="product-right">
+    <!-- LARGE IMAGE -->
+    <img src="assets/Placeholder/Capture.JPG" alt="Product Collection" class="main-product-img">
+
+    <!-- CERTIFICATES ROW -->
+    <div class="cert-row">
+      <img src="assets/icons/sedex.png" alt="Sedex" class="cert-logo">
+      <img src="assets/icons/smeta.png" alt="SMETA" class="cert-logo">
     </div>
+  </div>
+</section>
 
-    <div class="range-points">
-      <ul class="checklist">
-        <li>Delivering ultimate quality in every thread.</li>
-        <li>Your trusted partner for premium apparel manufacturing.</li>
-        <li>Leading garment exporter of premium textiles.</li>
-      </ul>
-    </div>
-  </section>
 
   <!-- ===== Red CTA band ===== -->
   <!-- <section class="cta-band">
@@ -153,15 +168,15 @@
       <a href="contact.html#quote" class="btn-cta">BOOK NOW</a>
     </div>
   </section> -->
-  <div class="capabilities-inner">
+  <!-- <div class="capabilities-inner">
   <h2 class="cap-heading">
       <span class="cap-heading-emph">Certificates</span> 
     </h2>
     </div>
   <div class="clients-grid">
     
-    <!-- Replace src paths with your real logos; duplicate/remove blocks as needed -->
-    <div class="client">
+     Replace src paths with your real logos; duplicate/remove blocks as needed -->
+    <!-- <div class="client">
       <img src="assets/Placeholder/iso.png" alt="ISO">
     </div>
     <div class="client">
@@ -173,8 +188,8 @@
     <div class="client">
       <img src="assets/Placeholder/fairtrade.png" alt="Fairtrade">
     </div>
-  </div>
-</section>
+  </div> -->
+<!-- </section> -->
 <div class="side-contact-bar">
   <!-- Call -->
   <a href="tel:+914214270522" class="side-box">
@@ -188,17 +203,17 @@
   </a>
 
   <!-- Email -->
-  <a href="mailto:eshaapparelssales@gmail.com" class="side-box">
-    <span class="side-icon">
-      <i class="fa-regular fa-envelope"></i>
-    </span>
-    <span class="side-text">
-      <!-- <span class="side-label">E-mail</span> -->
-      <span class="side-value">eshaapparelssales@gmail.com</span>
-    </span>
-  </a>
+ <a href="mailto:eshaapparelssales@gmail.com?subject=Product%20Information%20Request%20%E2%80%94%20Eshaa%20Apparels&body=Dear%20Eshaa%20Apparels%20Team%2C%0D%0A%0D%0AI%20am%20reaching%20out%20to%20request%20more%20information%20regarding%20your%20products%20and%20available%20offerings.%20Please%20share%20the%20details%20at%20your%20convenience.%0D%0A%0D%0AThank%20you."
+   target="_blank"
+   class="side-box">
+  <span class="side-icon">
+    <i class="fa-regular fa-envelope"></i>
+  </span>
+  <span class="side-text">
+    <span class="side-value">eshaapparelssales@gmail.com</span>
+  </span>
+</a>
 
-  <!-- Location -->
   <!-- Location -->
 <a href="https://www.google.com/maps/place/Eshaa+Apparels/@11.6423499,78.1431546,17z/"
    target="_blank"
@@ -259,9 +274,9 @@
       <ul class="f-links">
         <li><a href="products.html#mens">Mens Wear</a></li>
         <li><a href="products.html#womens">Womens Wear</a></li>
-        <li><a href="products.html#girls">Girls Wear</a></li>
-        <li><a href="products.html#boys">Boys Wear</a></li>
-        <li><a href="products.html#uniforms">Uniform Shirts</a></li>
+        <li><a href="products.html#girls"> </a></li>
+        <li><a href="products.html#boys"> </a></li>
+        <li><a href="products.html#uniforms"> </a></li>
       </ul>
     </div>
 

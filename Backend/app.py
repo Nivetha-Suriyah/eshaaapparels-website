@@ -8,6 +8,7 @@ from email.mime.base import MIMEBase
 from email import encoders
 from flask import Flask, jsonify, render_template, request
 import os
+import requests
 from dotenv import load_dotenv
 load_dotenv()   # <-- ADD THIS LINE
 # app = Flask(__name__)
@@ -145,6 +146,18 @@ def api_contact():
     message = (request.form.get("message") or "").strip()
     created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+        # ---------- CAPTCHA VERIFICATION ----------
+    captcha_response = request.form.get("g-recaptcha-response")
+    captcha_secret = os.getenv("RECAPTCHA_SECRET_KEY")
+
+    verify_url = "https://www.google.com/recaptcha/api/siteverify"
+    payload = {"secret": captcha_secret, "response": captcha_response}
+
+    captcha_verify = requests.post(verify_url, data=payload).json()
+
+    if not captcha_verify.get("success"):
+        return jsonify({"status": "error", "message": "Captcha failed. Please try again."}), 400
+
     missing = []
     if not name:
         missing.append("name")
@@ -212,6 +225,18 @@ def api_careers():
     email = (request.form.get("email") or "").strip()
     phone = (request.form.get("phone") or "").strip()
     created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        # ---------- CAPTCHA VERIFICATION ----------
+    captcha_response = request.form.get("g-recaptcha-response")
+    captcha_secret = os.getenv("RECAPTCHA_SECRET_KEY")
+
+    verify_url = "https://www.google.com/recaptcha/api/siteverify"
+    payload = {"secret": captcha_secret, "response": captcha_response}
+
+    captcha_verify = requests.post(verify_url, data=payload).json()
+
+    if not captcha_verify.get("success"):
+        return jsonify({"status": "error", "message": "Captcha failed. Please try again."}), 400
 
     missing = []
     if not name:

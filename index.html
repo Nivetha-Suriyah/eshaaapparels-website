@@ -69,15 +69,31 @@
 </header>
 <!-- ===== Floating WhatsApp (left) ===== -->
 
-  <a class="float-whatsapp" href="https://wa.me/918526644464" target="_blank" aria-label="WhatsApp">
+  <a class="float-whatsapp"
+   href="https://wa.me/918526644464?text=I%20would%20like%20to%20know%20more%20about%20your%20products%20at%20Eshaa%20Apparels."
+   target="_blank"
+   aria-label="WhatsApp">
     <i class="fa-brands fa-whatsapp"></i>
-  </a>
+</a>
+
+<a id="whatsapp-link" class="float-whatsapp" target="_blank" aria-label="WhatsApp">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+  const phone = "918526644464"; // replace with your real number
+  const message = "I am interested in learning more about the product range offered by Eshaa Apparels. Kindly share further details";
+  
+  document.getElementById("whatsapp-link").href =
+    "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+</script>
+
 
 <!-- ===== HERO SLIDER ===== -->
 <section class="hero-slider">
   <!-- Slide 1 -->
   <div class="hero-slide active"
-       style="background-image: url('assets/Placeholder/homebanner1.JPG');">
+       style="background-image: url('assets/icons/caro1.jpeg');">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="hero-kicker">WELCOME TO ESHAA APPARELS</p>
@@ -87,7 +103,7 @@
 
   <!-- Slide 2 -->
   <div class="hero-slide"
-       style="background-image: url('assets/Placeholder/homebanner2.JPG');">
+       style="background-image: url('assets/icons/caro2.jpeg');">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="hero-kicker">EXPORT QUALITY GARMENTS</p>
@@ -97,7 +113,7 @@
 
   <!-- Slide 3 -->
   <div class="hero-slide"
-       style="background-image: url('assets/Placeholder/homebanner3.JPG');">
+       style="background-image: url('assets/icons/caro3.jpeg');">
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <p class="hero-kicker">TRUST · QUALITY · ON-TIME</p>
@@ -283,10 +299,7 @@
 </section>
 <!-- ===== OUR CAPABILITIES ===== -->
 <section class="capabilities-section">
-  <div class="capabilities-overlay"></div>
-
-  <div class="capabilities-inner">
-    <h2 class="cap-heading">
+  <h2 class="cap-heading">
       <span class="cap-heading-emph">OUR</span> CAPABILITIES
     </h2>
     <p class="cap-subtitle">
@@ -294,80 +307,69 @@
       innovation, speed and quality to every stitch.
     </p>
 
-    <div class="cap-grid">
-      <!-- 1 -->
-      <div class="cap-item">
-        <div class="cap-icon-box">
-          <img src="assets/Placeholder/svg/spinning.svg" alt="Spinning">
-        </div>
-        <p class="cap-label">Spinning</p>
-      </div>
-
-      <!-- 2 -->
-      <div class="cap-item">
-        <div class="cap-icon-box">
-          <img src="assets/Placeholder/knitting.PNG" alt="Knitting">
-        </div>
-        <p class="cap-label">Knitting</p>
-      </div>
-
-      <!-- 3 -->
-      <div class="cap-item">
-        <div class="cap-icon-box">
-          <img src="assets/Placeholder/dyeing.png" alt="Dyeing" class="cap-icon">
-        </div>
-        <p class="cap-label">Dyeing</p>
-      </div>
-
-      <!-- 4 -->
-      <div class="cap-item">
-        <div class="cap-icon-box">
-          <img src="assets/Placeholder/cutting.png" alt="Cutting">
-        </div>
-        <p class="cap-label">Cutting</p>
-      </div>
-
-      <!-- 5 -->
-      <div class="cap-item">
-        <div class="cap-icon-box">
-          <img src="assets/Placeholder/printing.png" alt="Printing">
-        </div>
-        <p class="cap-label">Printing</p>
-      </div>
-
-      <!-- 6 -->
-      <div class="cap-item">
-        <div class="cap-icon-box">
-          <img src="assets/Placeholder/embroidery.png" alt="Embroidery">
-        </div>
-        <p class="cap-label">Embroidery</p>
-      </div>
-
-      <!-- 7 -->
-      <div class="cap-item">
-        <div class="cap-icon-box">
-          <img src="assets/Placeholder/sewing.png" alt="Sewing">
-        </div>
-        <p class="cap-label">Sewing</p>
-      </div>
-
-      <!-- 8 -->
-      <div class="cap-item">
-        <div class="cap-icon-box">
-          <img src="assets/Placeholder/packing.png" alt="Finishing &amp; Packing">
-        </div>
-        <p class="cap-label">Finishing &amp; Packing</p>
-      </div>
+  <div class="capabilities-grid">
+    <div class="capability-card">
+      <img src="assets/icons/fabricsource.png" alt="Fabric Sourcing">
+      <span>Fabric Sourcing</span>
     </div>
+
+    <div class="capability-card">
+      <img src="assets/icons/pattern.png" alt="Pattern Making">
+      <span>Pattern Making</span>
+    </div>
+
+    <div class="capability-card">
+      <img src="assets/icons/patternmaking.png" alt="Fabric Marking">
+      <span>Fabric Marking</span>
+    </div>
+
+    <div class="capability-card">
+      <img src="assets/icons/cutting.png" alt="Cutting">
+      <span>Cutting</span>
+    </div>
+
+    <div class="capability-card">
+      <img src="assets/icons/embroidery.png" alt="Embellishment">
+      <span>Embellishment</span>
+    </div>
+
+    <div class="capability-card">
+      <img src="assets/icons/sewing.png" alt="Sewing">
+      <span>Sewing</span>
+    </div>
+
+    <div class="capability-card">
+      <img src="assets/icons/dyeing.png" alt="Dyeing">
+      <span>Dyeing</span>
+    </div>
+
+    <div class="capability-card">
+      <img src="assets/icons/quality-control.png" alt="Quality Control">
+      <span>Quality Control</span>
+    </div>
+
+    <div class="capability-card">
+      <img src="assets/icons/iron.png" alt="Finishing">
+      <span>Finishing</span>
+    </div>
+
+    <div class="capability-card">
+      <img src="assets/icons/packing.png" alt="Packing & Dispatch">
+      <span>Packing & Dispatch</span>
+    </div>
+    
   </div>
 </section>
+
 <!-- ===== VISION & MISSION ===== -->
 <section class="vision-mission-section">
   <div class="vm-container">
 
     <!-- Left: Images -->
     <div class="vm-images">
-      <img src="assets/Placeholder/factory1.JPG" alt="Factory Image 1">
+      &nbsp;
+      <img src="assets/icons/vissionmission.jfif" alt="Factory Image 1">
+      
       <!-- <img src="assets/Placeholder/factory2.JPG" alt="Factory Image 2"> -->
     </div>
 
@@ -388,11 +390,9 @@
         craftsmanship and ethical practices, we are committed to setting new benchmarks as one of the
         top apparel manufactures in India and a leading name among clothing manufactures.
       </p>
-
       <h3 class="vm-highlight">
         Partner with a name you can trust. Custom-crafted. Globally respected
       </h3>
-
       <a href="contact.html" class="vm-btn">START YOUR JOURNEY</a>
     </div>
 
@@ -413,15 +413,18 @@
   </a>
 
   <!-- Email -->
-  <a href="mailto:eshaapparelssales@gmail.com" class="side-box">
-    <span class="side-icon">
-      <i class="fa-regular fa-envelope"></i>
-    </span>
-    <span class="side-text">
-      <!-- <span class="side-label">E-mail</span> -->
-      <span class="side-value">eshaapparelssales@gmail.com</span>
-    </span>
-  </a>
+ <a href="mailto:eshaapparelssales@gmail.com?subject=Product%20Information%20Request%20%E2%80%94%20Eshaa%20Apparels&body=Dear%20Eshaa%20Apparels%20Team%2C%0D%0A%0D%0AI%20am%20reaching%20out%20to%20request%20more%20information%20regarding%20your%20products%20and%20available%20offerings.%20Please%20share%20the%20details%20at%20your%20convenience.%0D%0A%0D%0AThank%20you."
+   target="_blank"
+   class="side-box">
+  <span class="side-icon">
+    <i class="fa-regular fa-envelope"></i>
+  </span>
+  <span class="side-text">
+    <span class="side-value">eshaapparelssales@gmail.com</span>
+  </span>
+</a>
+
+
 
   <!-- Location -->
   <!-- Location -->
@@ -491,9 +494,9 @@
       <ul class="f-links">
         <li><a href="products.html#mens">Mens Wear</a></li>
         <li><a href="products.html#womens">Womens Wear</a></li>
-        <li><a href="products.html#girls">Girls Wear</a></li>
-        <li><a href="products.html#boys">Boys Wear</a></li>
-        <li><a href="products.html#uniforms">Uniform Shirts</a></li>
+        <li><a href="products.html#girls"> </a></li>
+        <li><a href="products.html#boys"> </a></li>
+        <li><a href="products.html#uniforms"> </a></li>
       </ul>
     </div>
 

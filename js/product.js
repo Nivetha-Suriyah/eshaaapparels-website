@@ -3,14 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Update these paths with your real image files
   const productData = {
     mens: {
-      polo: [
-        { src: 'assets/Placeholder/polo1.jpg', alt: 'Mens Polo 1' },
-        { src: 'assets/Placeholder/polo2.jpg', alt: 'Mens Polo 2' },
-        { src: 'assets/Placeholder/polo3.jpg', alt: 'Mens Polo 3' },
-        // { src: 'assets/products/mens/polo4.jpg', alt: 'Mens Polo 4' },
-        // { src: 'assets/products/mens/polo5.jpg', alt: 'Mens Polo 5' },
-        // { src: 'assets/products/mens/polo6.jpg', alt: 'Mens Polo 6' },
-      ],
       Formal: [
         { src: 'assets/Placeholder/formal1.jpg', alt: 'Mens Round Neck 1' },
         { src: 'assets/Placeholder/formal2.jpg', alt: 'Mens Round Neck 2' },
@@ -21,17 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: 'assets/Placeholder/casual2.jpg', alt: '' },
         { src: 'assets/Placeholder/casual3.jpg', alt: '' }
       ]
-    //   uniform: [],
-    //   oversized: [],
-    //   hoodie: [],
-    //   'track-pants': [],
-    //   'bottom-wear': [],
     },
     women: {
-      'Crop-Top': [
-        { src: 'assets/Placeholder/crop1.jpg', alt: '' },
-        { src: 'assets/Placeholder/crop2.jpg', alt: '' },
-      ],
         Kurtis: [
         { src: 'assets/Placeholder/kurti1.jpg', alt: '' },
         { src: 'assets/Placeholder/kurti2.jpg', alt: '' },
@@ -40,18 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: 'assets/Placeholder/bottom1.jpg', alt: '' },
         { src: 'assets/Placeholder/bottom2.jpg', alt: '' },
       ]
-    },
-    boys: {
-      polo: [],
-      tshirt: []
-    },
-    girls: {
-      polo: [],
-      dress: []
-    },
-    infants: {
-      bodysuit: [],
-      sets: []
     }
   };
 

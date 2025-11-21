@@ -86,7 +86,7 @@
 }
 .float-rail a:hover{ background:#a40e26; }
 .float-whatsapp{
-  position:fixed; left:18px; bottom:18px; width:54px; height:54px;
+  position:fixed; right:18px; bottom:18px; width:54px; height:54px;
   display:grid; place-items:center; background:#25D366; color:#fff;
   border-radius:50%; box-shadow:0 6px 18px rgba(0,0,0,.18); z-index:60;
   font-size:24px;
@@ -1082,117 +1082,125 @@
 /* ===== OUR CAPABILITIES ===== */
 .capabilities-section {
   position: relative;
+  padding: 40px 4vw 60px;
   color: #ffffff;
-  padding: 70px 0;
-  background-image: url('../assets/Placeholder/Capture.JPG');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  /* background-attachment: fixed; remove if it causes issues */
-}
-
-.capabilities-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-}
-
-.capabilities-inner {
-  position: relative;
-  width: min(1200px, 100% - 64px);
-  margin: 0 auto;
   text-align: center;
 }
 
-.cap-heading {
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-
-.cap-heading-emph {
-  color: #1899D3;   /* red 'OUR' */
-}
-
-.cap-subtitle {
+.capabilities-heading {
   max-width: 900px;
   margin: 0 auto 40px;
-  font-size: 16px;
+  font-size: 18px;
+  line-height: 1.5;
+}
+.cap-heading {
+    font-size: 38px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.75);
 }
 
-/* grid of 8 items */
-.cap-grid {
+/* GRID: 5 per row on desktop */
+.capabilities-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 40px 60px;
+  grid-template-columns: repeat(5, minmax(0, 1fr)); /* 5 columns */
+  gap: 30px 40px;
   justify-items: center;
 }
 
-/* each item */
-.cap-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
+/* Tablet */
+@media (max-width: 991.98px) {
+  .capabilities-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
-/* icon box */
-.cap-icon-box {
-  width: 120px;
-  height: 120px;
-  border-radius: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.8);
-  transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
-}
-
-.cap-icon-box img {
-  max-width: 70px;
-  max-height: 70px;
-}
-
-/* hover effect */
-.cap-item:hover .cap-icon-box {
-  background: rgba(24, 153, 211, 0.25); /* light blue glow */
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-}
-
-.cap-label {
-  font-size: 16px;
-  font-weight: 600;
-}
-
-/* responsive */
-@media (max-width: 992px) {
-  .cap-grid {
+/* Mobile */
+@media (max-width: 575.98px) {
+  .capabilities-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
-@media (max-width: 600px) {
-  .capabilities-section {
-    padding: 50px 0;
-  }
-  .cap-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 24px 20px;
-  }
-  .cap-icon-box {
-    width: 100px;
-    height: 100px;
-  }
-.cap-icon {
-  /* width: 70px;
-  height: 70px; */
-  fill: white;
-  stroke: white;
+.capability-card {
+  width: 140px;
+  height: 140px;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 18px;
+  padding: 18px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(4px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+.capability-card img {
+  width: 42px;
+  height: 42px;
 }
+
+.capability-card span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.capability-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+.capabilities-section {
+  position: relative;
+  padding: 60px 4vw 80px;
+  text-align: center;
+  color: #ffffff;
+  background-image: url("../assets/icons/ca-background.jpeg"); /* Replace path! */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Slight dark overlay to make icons readable */
+  backdrop-filter: blur(2px);
+}
+
+.capabilities-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);   /* Dark overlay (adjust as needed) */
+  z-index: 0;
+}
+.cap-heading-emph {
+    color: #1e88e5; /* Or your brand blue */
+    font-weight: 900;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.75);
+}
+.cap-subtitle {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    color: #ffffff;
+    font-size: 17px;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.75);
+}
+
+/* .capabilities-heading, */
+.capabilities-grid {
+  position: relative;
+  z-index: 1; /* Bring content above overlay */
+}
+
 /* ===== VISION & MISSION ===== */
 .vision-mission-section {
   padding: 80px 0;
@@ -1388,7 +1396,8 @@
 }
 /* 
 /* generic hidden helper */
-/* .hidden {
+/* 
+.hidden {
   display: none !important;
 }
 #success-popup {
@@ -1489,3 +1498,62 @@
 .apply-form {
   display: none;
 }
+.product-certificates {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 60px 4vw;
+}
+
+.product-left,
+.product-right {
+  flex: 1;
+}
+
+/* LARGE PRODUCT IMAGE */
+.main-product-img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* SMALL CERT LOGOS BELOW IMAGE */
+.cert-row {
+  display: flex;
+  justify-content: center;     /* center under the big image */
+  gap: 24px;
+  margin-top: 18px;
+  width: 100%;
+}
+
+.cert-logo {
+  height: 60px;                /* make them identical size */
+  width: auto;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 10px 16px;
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+}
+.product-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* center everything */
+}
+
+.main-product-img {
+  width: 100%;
+  max-width: 480px;     /* EXACT width the cert row will match */
+  border-radius: 18px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+.hidden {
+  display: none !important;
+}
+
