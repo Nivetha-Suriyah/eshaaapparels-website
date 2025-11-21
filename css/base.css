@@ -1,3 +1,176 @@
+/* Make sizing predictable */
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Images should not overflow */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Body text */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+
+/* Wrapper for centered content */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 16px;
+}
+.site-header {
+  position: sticky; /* optional */
+  top: 0;
+  z-index: 100;
+  background: #ffffff;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Simple mobile menu: stack or hide links on small screens */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .nav-links {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 8px 0;
+    border-top: 1px solid #eee;
+  }
+}
+.section {
+  padding: 60px 0;
+}
+
+.section-inner {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.section-col {
+  flex: 1 1 0;
+}
+
+/* Mobile: stack columns vertically */
+@media (max-width: 768px) {
+  .section-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.cards-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.card {
+  flex: 1 1 calc(25% - 24px); /* 4 per row on large screens */
+  min-width: 220px;
+}
+
+/* Tablet: 2 per row */
+@media (max-width: 992px) {
+  .card {
+    flex: 1 1 calc(50% - 24px);
+  }
+}
+
+/* Mobile: 1 per row */
+@media (max-width: 600px) {
+  .card {
+    flex: 1 1 100%;
+  }
+}
+.site-footer {
+  padding: 40px 0 20px;
+  background: #111827; /* example */
+  color: #f9fafb;
+  font-size: 0.9rem;
+}
+
+.footer-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+/* Each footer column */
+.f-col {
+  flex: 1 1 200px;
+}
+
+/* Centered / stacked on small screens */
+@media (max-width: 768px) {
+  .footer-wrap {
+    flex-direction: column;
+  }
+
+  .f-col {
+    width: 100%;
+  }
+
+  .site-footer {
+    text-align: left; /* or center if you want */
+  }
+}
+.side-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+/* Icon sizing */
+.side-icon i {
+  font-size: 1rem;
+}
+
+/* On very small screens allow wrapping */
+@media (max-width: 480px) {
+  .side-box {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
 :root{ --brand-600:#225df0; --brand-700:#1a48c4; --ink-900:#0b1220; --ink-700:#3a4152; --ink-500:#6b7280; --surface:#ffffff; --radius:16px; --container:1200px; }
 *,*::before,*::after{ box-sizing:border-box; }
 html,body{ height:100%; }
