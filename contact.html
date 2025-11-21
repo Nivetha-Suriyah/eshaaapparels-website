@@ -164,7 +164,28 @@
   <div class="contact-email-inner">
 
     <!-- LEFT: EMAIL FORM -->
-    <div class="email-form">
+   <div class="office-details">
+    <iframe
+    src="https://www.google.com/maps?q=11.6423499,78.1431546&z=17&output=embed"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+
+      <h3>Head Office & Factory</h3>
+      <p>41-A, SANKARI MAIN ROAD, ANNATHANAPATTY,<br>
+      SALEM – 636002, TAMIL NADU, INDIA.</p>
+        admin@eshaaapparels.co.in<br>
+        www.eshaaapparels.com
+      </p>
+      </div>
+      
+
+
+    <!-- RIGHT: CONTACT DETAILS -->
+    
+
+       <div class="email-form">
           <h2>E-Mail Us</h2>
           <p>Contact us and get the quotation and service.</p>
 
@@ -187,26 +208,8 @@
         </form>
       </div>
 
-    <!-- <form action="http://127.0.0.1:5000/api/contact" method="POST" class="email-form">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="tel" name="phone" placeholder="Phone">
-      <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit" class="side-icon">Send</button>
-    </form> -->
 
-
-    <!-- RIGHT: CONTACT DETAILS -->
-    <div class="office-details">
-
-      <h3>Head Office & Factory</h3>
-      <p>41-A, SANKARI MAIN ROAD, ANNATHANAPATTY,<br>
-      SALEM – 636002, TAMIL NADU, INDIA.</p>
-        admin@eshaaapparels.co.in<br>
-        www.eshaaapparels.com
-      </p>
-
-      <h3>Our Journey</h3>
+      <!-- <h3>Our Journey</h3>
 
       <div class="journey-block">
         <div class="journey-title">History – Since 2009</div>
@@ -238,7 +241,7 @@
           <div class="fill" style="width: 80%;"></div>
         </div>
         <span class="journey-years">4</span> <span class="journey-label">Years</span>
-      </div>
+      </div> -->
 
     </div>
   </div>
@@ -446,42 +449,48 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 
 <!-- Popup js script -->
-<script>
+ <script>
 document.addEventListener("DOMContentLoaded", function () {
-    // Attach AJAX submit to ALL forms with class "popup-form"
-    document.querySelectorAll("form.popup-form").forEach(form => {
-        form.addEventListener("submit", async function (event) {
-            event.preventDefault(); // stop normal form navigation
+  document.querySelectorAll("form.popup-form").forEach(form => {
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
 
-            const formData = new FormData(form);
+      // --- get captcha token for THIS form ---
+      const captchaResponse = grecaptcha.getResponse();
+      if (!captchaResponse) {
+        alert("Please complete the CAPTCHA.");
+        return;
+      }
 
-            try {
-                const response = await fetch(form.action, {
-                    method: "POST",
-                    body: formData
-                });
+      const formData = new FormData(form);
+      formData.append("g-recaptcha-response", captchaResponse);
 
-                if (!response.ok) {
-                    alert("There was an error. Please try again.");
-                    return;
-                }
-
-                const data = await response.json();
-                if (data.status === "ok") {
-                    // mark that we should show popup on home page
-                    sessionStorage.setItem("formSubmitted", "yes");
-                    // go to home page
-                    window.location.href = "/";
-                }
-
-            } catch (error) {
-                console.error("Form error:", error);
-                alert("Network error. Please try again.");
-            }
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData
         });
+
+        const data = await response.json().catch(() => null);
+
+        if (!response.ok || !data || data.status !== "ok") {
+          alert(data?.message || "There was an error. Please try again.");
+          return;
+        }
+
+        // success
+        form.reset();
+        grecaptcha.reset();  // reset captcha box
+        sessionStorage.setItem("formSubmitted", "yes");
+        window.location.href = "/";
+      } catch (err) {
+        console.error("Form error:", err);
+        alert("Network error. Please try again.");
+      }
     });
+  });
 });
-</script>
+</script
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script>
   const captchaResponse = grecaptcha.getResponse();

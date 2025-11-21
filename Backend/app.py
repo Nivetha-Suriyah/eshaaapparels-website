@@ -146,7 +146,7 @@ def api_contact():
     message = (request.form.get("message") or "").strip()
     created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-        # ---------- CAPTCHA VERIFICATION ----------
+       # ---------- CAPTCHA VERIFICATION ----------
     captcha_response = request.form.get("g-recaptcha-response")
     captcha_secret = os.getenv("RECAPTCHA_SECRET_KEY")
 
@@ -154,9 +154,13 @@ def api_contact():
     payload = {"secret": captcha_secret, "response": captcha_response}
 
     captcha_verify = requests.post(verify_url, data=payload).json()
+    print("Captcha verify result:", captcha_verify)  # <-- add this for debugging
 
     if not captcha_verify.get("success"):
-        return jsonify({"status": "error", "message": "Captcha failed. Please try again."}), 400
+        return jsonify({
+            "status": "error",
+            "message": "Captcha validation failed. Please refresh the page and try again."
+        }), 400
 
     missing = []
     if not name:
@@ -227,6 +231,7 @@ def api_careers():
     created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
         # ---------- CAPTCHA VERIFICATION ----------
+    # ---------- CAPTCHA VERIFICATION ----------
     captcha_response = request.form.get("g-recaptcha-response")
     captcha_secret = os.getenv("RECAPTCHA_SECRET_KEY")
 
@@ -234,9 +239,13 @@ def api_careers():
     payload = {"secret": captcha_secret, "response": captcha_response}
 
     captcha_verify = requests.post(verify_url, data=payload).json()
+    print("Captcha verify result:", captcha_verify)  # <-- add this for debugging
 
     if not captcha_verify.get("success"):
-        return jsonify({"status": "error", "message": "Captcha failed. Please try again."}), 400
+        return jsonify({
+            "status": "error",
+            "message": "Captcha validation failed. Please refresh the page and try again."
+        }), 400
 
     missing = []
     if not name:
