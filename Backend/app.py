@@ -6,11 +6,17 @@ from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.base import MIMEBase
 from email import encoders
-from flask import Flask, request
+from flask import Flask, render_template, request
 import os
 from dotenv import load_dotenv
 load_dotenv()   # <-- ADD THIS LINE
-app = Flask(__name__)
+# app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder="../",   # look for index.html, about.html, etc. in project root
+    static_folder="../",     # serve css/, js/, assets/ also from project root
+    static_url_path=""       # so URLs like /css/style.css still work
+)
 
 # -----------------------------
 # Paths & folders
@@ -119,7 +125,7 @@ def send_email(to_address: str, subject: str, body: str, attachment_path: str | 
 # -----------------------------
 @app.route("/")
 def health():
-    return "Eshaa backend is running ✅"
+    return render_template("index.html")
 
 
 # ---- Contact form: /api/contact ----
