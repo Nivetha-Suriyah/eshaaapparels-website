@@ -151,11 +151,11 @@ def api_contact():
     # captcha_verify = requests.post(verify_url, data=payload).json()
     # print("Captcha verify result:", captcha_verify)  # <-- add this for debugging
 
-    if not captcha_verify.get("success"):
-        return jsonify({
-            "status": "error",
-            "message": "Captcha validation failed. Please refresh the page and try again."
-        }), 400
+    # if not captcha_verify.get("success"):
+    #     return jsonify({
+    #         "status": "error",
+    #         "message": "Captcha validation failed. Please refresh the page and try again."
+    #     }), 400
 
     missing = []
     if not name:
@@ -238,11 +238,11 @@ def api_careers():
     # captcha_verify = requests.post(verify_url, data=payload).json()
     # print("Captcha verify result:", captcha_verify)  # <-- add this for debugging
 
-    if not captcha_verify.get("success"):
-        return jsonify({
-            "status": "error",
-            "message": "Captcha validation failed. Please refresh the page and try again."
-        }), 400
+    # if not captcha_verify.get("success"):
+    #     return jsonify({
+    #         "status": "error",
+    #         "message": "Captcha validation failed. Please refresh the page and try again."
+    #     }), 400
     missing = []
     if not name:
         missing.append("name")
