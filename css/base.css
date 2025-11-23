@@ -270,3 +270,72 @@
   margin-left: auto;
 }
 }
+@media (max-width: 768px) {
+
+  /* stack image + text vertically */
+  .vm-container {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* image full width */
+  .vm-images img {
+    width: 100%;
+    max-width: none;
+    border-radius: 12px;
+  }
+
+  /* text full width */
+  .vm-content {
+    width: 100%;
+  }
+
+  /* title smaller and tighter */
+  .vm-title {
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  /* body text */
+  .vm-text {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  /* highlight line */
+  .vm-highlight {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-top: 16px;
+  }
+
+  /* button aligned left, not squeezed */
+  .vm-btn {
+    display: inline-flex;
+    margin-top: 18px;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+  }
+}
+/* ============================
+   MOBILE FIX FOR CONTACT CARDS
+   ============================ */
+@media (max-width: 600px) {
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr !important;  /* force single column */
+    gap: 20px !important;
+  }
+
+  .contact-card {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 20px 18px;
+    border-radius: 16px;
+  }
+
+  .contact-email a {
+    word-break: break-all;  /* long emails won't overflow */
+  }
+}
