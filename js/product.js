@@ -4,25 +4,43 @@ document.addEventListener('DOMContentLoaded', () => {
   const productData = {
     mens: {
       Formal: [
-        { src: 'assets/Placeholder/formal1.jpg', alt: 'Mens Round Neck 1' },
-        { src: 'assets/Placeholder/formal2.jpg', alt: 'Mens Round Neck 2' },
-        { src: 'assets/Placeholder/formal3.jpg', alt: 'Mens Round Neck 3' }
+        { src: 'assets/icons/products/FS01.png', alt: 'Mens Formal Shirt 1' },
+        { src: 'assets/icons/products/FS02.png', alt: 'Mens Formal Shirt 2' },
+        { src: 'assets/icons/products/FS03.png', alt: 'Mens Formal Shirt 3' },
+        { src: 'assets/icons/products/FS04.png', alt: 'Mens Formal Shirt 4' },
+        { src: 'assets/icons/products/FS05.png', alt: 'Mens Formal Shirt 5' },
+        { src: 'assets/icons/products/FS06.png', alt: 'Mens Formal Shirt 6' },
+        { src: 'assets/icons/products/FS07.png', alt: 'Mens Formal Shirt 7' },
+        { src: 'assets/icons/products/FS08.png', alt: 'Mens Formal Shirt 8' },
+        { src: 'assets/icons/products/FS09.png', alt: 'Mens Formal Shirt 9' },
+        { src: 'assets/icons/products/FS10.png', alt: 'Mens Formal Shirt 10' },
+        { src: 'assets/icons/products/FS11.png', alt: 'Mens Formal Shirt 11' },
+        { src: 'assets/icons/products/FS12.png', alt: 'Mens Formal Shirt 12' },
+        { src: 'assets/icons/products/FS13.png', alt: 'Mens Formal Shirt 13' }
       ],
-      Casual: [
-        { src: 'assets/Placeholder/casual1.jpg', alt: '' },
-        { src: 'assets/Placeholder/casual2.jpg', alt: '' },
-        { src: 'assets/Placeholder/casual3.jpg', alt: '' }
-      ]
+      // Casual: [
+      //   { src: 'assets/Placeholder/casual1.jpg', alt: '' },
+      //   { src: 'assets/Placeholder/casual2.jpg', alt: '' },
+      //   { src: 'assets/Placeholder/casual3.jpg', alt: '' }
+      // ]
     },
-    women: {
+    Women: {
         Kurtis: [
-        { src: 'assets/Placeholder/kurti1.jpg', alt: '' },
-        { src: 'assets/Placeholder/kurti2.jpg', alt: '' },
+        { src: 'assets/icons/products/K01.png', alt: 'Female Kurti 01' },
+        { src: 'assets/icons/products/K02.png', alt: 'Female Kurti 02' },
+        { src: 'assets/icons/products/K03.png', alt: 'Female Kurti 03' },
+        { src: 'assets/icons/products/K04.png', alt: 'Female Kurti 04' },
+        { src: 'assets/icons/products/K05.png', alt: 'Female Kurti 05' },
+        { src: 'assets/icons/products/K06.png', alt: 'Female Kurti 06' },
+        { src: 'assets/icons/products/K07.png', alt: 'Female Kurti 07' },
+        { src: 'assets/icons/products/K08.png', alt: 'Female Kurti 08' },
+        { src: 'assets/icons/products/K09.png', alt: 'Female Kurti 09' },
+        { src: 'assets/icons/products/K10.png', alt: 'Female Kurti 10' },
+        { src: 'assets/icons/products/K11.png', alt: 'Female Kurti 11' },
+        { src: 'assets/icons/products/K12.png', alt: 'Female Kurti 12' },
+        { src: 'assets/icons/products/K13.png', alt: 'Female Kurti 13' },
+        { src: 'assets/icons/products/K14.png', alt: 'Female Kurti 14' }   
     ],
-      'bottom-wear': [
-        { src: 'assets/Placeholder/bottom1.jpg', alt: '' },
-        { src: 'assets/Placeholder/bottom2.jpg', alt: '' },
-      ]
     }
   };
 
